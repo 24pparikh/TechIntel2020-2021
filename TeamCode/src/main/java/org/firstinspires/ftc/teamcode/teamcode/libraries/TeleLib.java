@@ -29,6 +29,12 @@ import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_
 import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_GRABBER;
 import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_GRABBER_GRAB;
 import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_GRABBER_REST;
+import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_GRIPPER_LEFT;
+import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_GRIPPER_LEFT_GRAB;
+import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_GRIPPER_LEFT_REST;
+import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_GRIPPER_RIGHT;
+import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_GRIPPER_RIGHT_GRAB;
+import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_GRIPPER_RIGHT_REST;
 import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_INTAKE;
 import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_SCORING_ARM;
 import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_SCORING_EXTEND;
@@ -107,6 +113,17 @@ public class TeleLib {
 //            robot.setDcMotorPower(MOTOR_BACK_LEFT_WHEEL, (float) (r * Math.sin(robotAngle) + rightX));
 //            robot.setDcMotorPower(MOTOR_BACK_RIGHT_WHEEL, (float) (r * Math.cos(robotAngle) - rightX));
 //        }
+    }
+
+    public void processGripperStone() {
+        if (opMode.gamepad1.a) {
+            robot.setServoPosition(SERVO_GRIPPER_LEFT, SERVO_GRIPPER_LEFT_GRAB);
+            robot.setServoPosition(SERVO_GRIPPER_RIGHT, SERVO_GRIPPER_RIGHT_GRAB);
+        }
+        if (opMode.gamepad1.b) {
+            robot.setServoPosition(SERVO_GRIPPER_LEFT, SERVO_GRIPPER_LEFT_REST);
+            robot.setServoPosition(SERVO_GRIPPER_RIGHT, SERVO_GRIPPER_RIGHT_REST);
+        }
     }
 
 //    public void processDropCapstone() {

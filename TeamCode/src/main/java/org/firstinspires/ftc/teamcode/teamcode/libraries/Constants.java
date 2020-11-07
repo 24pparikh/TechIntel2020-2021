@@ -36,7 +36,8 @@ public class Constants {
     static final int SERVO_INTAKE = 7;
     static final int SERVO_STOPPER = 8;
     static final int SERVO_AUTONOMOUS_GRABBER_FRONT = 9;
-
+    static final int SERVO_GRIPPER_RIGHT = 10;
+    static final int SERVO_GRIPPER_LEFT = 11;
 
     //********** Ramp *********************//
     final static float MOTOR_RAMP_FB_POWER_LOWER_LIMIT = 0.35f;  //.3
@@ -75,6 +76,12 @@ public class Constants {
     static final float SERVO_TELEOP_ARM_POSITION = .15f;
     static final float SERVO_STOPPER_STOP = 0.57f;
     static final float SERVO_STOPPER_REST = 0f;
+    static final float SERVO_GRIPPER_LEFT_REST = .48f;
+    static final float SERVO_GRIPPER_LEFT_GRAB = .7f;
+    static final float SERVO_GRIPPER_RIGHT_REST = .46f;
+    static final float SERVO_GRIPPER_RIGHT_GRAB = .28f;
+
+
 
     //********** Touch Sensor Indexes **********//
     public static final int FOUNDATION_TOUCH_SENSOR = 0;
