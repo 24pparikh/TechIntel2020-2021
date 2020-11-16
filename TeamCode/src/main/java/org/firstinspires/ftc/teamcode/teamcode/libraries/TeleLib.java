@@ -115,16 +115,16 @@ public class TeleLib {
 //        }
     }
 
-    public void processGripperStone() {
-        if (opMode.gamepad1.a) {
-            robot.setServoPosition(SERVO_GRIPPER_LEFT, SERVO_GRIPPER_LEFT_GRAB);
-            robot.setServoPosition(SERVO_GRIPPER_RIGHT, SERVO_GRIPPER_RIGHT_GRAB);
-        }
-        if (opMode.gamepad1.b) {
-            robot.setServoPosition(SERVO_GRIPPER_LEFT, SERVO_GRIPPER_LEFT_REST);
-            robot.setServoPosition(SERVO_GRIPPER_RIGHT, SERVO_GRIPPER_RIGHT_REST);
-        }
-    }
+//    public void processGripperStone() {
+//        if (opMode.gamepad1.a) {
+//            robot.setServoPosition(SERVO_GRIPPER_LEFT, SERVO_GRIPPER_LEFT_GRAB);
+//            robot.setServoPosition(SERVO_GRIPPER_RIGHT, SERVO_GRIPPER_RIGHT_GRAB);
+//        }
+//        if (opMode.gamepad1.b) {
+//            robot.setServoPosition(SERVO_GRIPPER_LEFT, SERVO_GRIPPER_LEFT_REST);
+//            robot.setServoPosition(SERVO_GRIPPER_RIGHT, SERVO_GRIPPER_RIGHT_REST);
+//        }
+//    }
 
 //    public void processDropCapstone() {
 //

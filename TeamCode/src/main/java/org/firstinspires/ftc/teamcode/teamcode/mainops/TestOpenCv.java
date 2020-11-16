@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.teamcode.supportops;//package org.firstinspires.ftc.teamcode.supportops;
+package org.firstinspires.ftc.teamcode.teamcode.mainops;
 //
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -6,7 +6,9 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.robotcore.internal.android.dx.ssa.DomFront;
 import org.firstinspires.ftc.teamcode.teamcode.libraries.AutoLib;
 import org.firstinspires.ftc.teamcode.teamcode.libraries.Constants;
+import org.firstinspires.ftc.teamcode.teamcode.libraries.TeleLib;
 import org.opencv.core.Point;
+//import android.graphics.Point;
 
 /*
  * Title: CalcTurn Test
@@ -18,25 +20,19 @@ import org.opencv.core.Point;
 // */
 //
 @Autonomous(group = "Support")
-public class TestCalcMove extends LinearOpMode {
-    private AutoLib autoLib;
+public class TestOpenCv extends LinearOpMode {
+//    private AutoLib autoLib;
+private TeleLib teleLib;
 
 
     @SuppressWarnings("RedundantThrows")
     @Override
     public void runOpMode() throws InterruptedException {
         initialize();
+//        telemetry.addData("pos", autoLib.getPipeline().getDetectedPosition());
+//        autoLib.getPipeline().getDetectedPosition();
 
-        telemetry.addLine("About to move");
-        telemetry.update();
-        autoLib.calcMove(10,.1f, Constants.Direction.FORWARD);
-        telemetry.addLine("Done moving");
-//        autoLib.rampMove(200,1f, Constants.Direction.FORWARD, true);
 
-       Thread.sleep(1000);
-
-        telemetry.addData("Just moved","finished moving");
-        telemetry.update();
     }
 
 
@@ -44,10 +40,9 @@ public class TestCalcMove extends LinearOpMode {
         telemetry.addData("Status", "Initializing...");
         telemetry.update();
 
-//        autoLib = new AutoLib(this);
-        autoLib = new AutoLib(this, new Point[]{new Point(161, 233), new Point(255, 172), new Point(161, 231), new Point(252, 224)});
-
-
+//        autoLib = new AutoLib(this, new Point[]{new Point(161, 233), new Point(255, 172), new Point(161, 231), new Point(252, 224)});
+//        autoLib = new AutoLib(this, new Point[]{new Point(217, 426), new Point(299, 454), new Point(217, 260), new Point(299, 289)});
+        teleLib = new TeleLib(this);
         telemetry.addData("Status", "Ready");
         telemetry.update();
         waitForStart();

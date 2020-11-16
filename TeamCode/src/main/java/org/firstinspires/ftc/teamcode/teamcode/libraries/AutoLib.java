@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode.teamcode.libraries;
 
-import android.graphics.Point;
+//import android.graphics.Point;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -16,11 +16,15 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackableDefaultListener;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
-//import org.firstinspires.ftc.teamcode.teamcode.mainops.DetectionPipeline;
-//import org.opencv.core.Point;
-//import org.openftc.easyopencv.OpenCvCamera;
-//import org.openftc.easyopencv.OpenCvCameraFactory;
-//import org.openftc.easyopencv.OpenCvCameraRotation;
+import org.firstinspires.ftc.teamcode.teamcode.mainops.DetectionPipeline;
+import org.openftc.easyopencv.OpenCvCamera;
+import org.openftc.easyopencv.OpenCvCameraFactory;
+import org.openftc.easyopencv.OpenCvCameraRotation;
+import org.firstinspires.ftc.teamcode.teamcode.mainops.DetectionPipeline;
+import org.openftc.easyopencv.OpenCvCamera;
+import org.openftc.easyopencv.OpenCvCameraFactory;
+import org.openftc.easyopencv.OpenCvCameraRotation;
+import org.opencv.core.Point;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,32 +88,34 @@ public class AutoLib {
     private List<VuforiaTrackable> allTrackables;
     private VuforiaLocalizer.Parameters parameters;
     private VuforiaTrackables targetsSkyStone;
-//    private DetectionPipeline pipeline;
+    private DetectionPipeline pipeline;
 
 
     // Declaring TensorFlow detection
     private TFObjectDetector tfod;
 
     //
-//    public AutoLib(LinearOpMode opMode, Point[] points) {
-//        robot = new Robot(opMode);
-//        this.opMode = opMode;
-//        OpMode aOpMode;
-////        pipeline = new DetectionPipeline(points);
-//
-//        //initVuforia();
-////        initOpenCv();
-//    }
-
-    public AutoLib(LinearOpMode opMode) {
+    public AutoLib(LinearOpMode opMode, Point[] points) {
         robot = new Robot(opMode);
         this.opMode = opMode;
         OpMode aOpMode;
-//        pipeline = new DetectionPipeline(new Point[]{});
+//        pipeline = new DetectionPipeline(points);
+        pipeline = new DetectionPipeline(new Point[]{});
+//        pipeline = new DetectionPipeline(Point[]{});
 
         //initVuforia();
-//        initOpenCv();
+        initOpenCv();
     }
+
+//    public AutoLib(LinearOpMode opMode) {
+//        robot = new Robot(opMode);
+//        this.opMode = opMode;
+//        OpMode aOpMode;
+////        pipeline = new DetectionPipeline(new Point[]{});
+//
+//        //initVuforia();
+//        initOpenCv();
+//    }
 
     private static final VuforiaLocalizer.CameraDirection CAMERA_CHOICE = BACK;
     private static final boolean PHONE_IS_PORTRAIT = false;
@@ -142,7 +148,7 @@ public class AutoLib {
 
 
     WebcamName webcamName = null;
-//    OpenCvCamera cvCamera;
+    OpenCvCamera cvCamera;
 
     private boolean targetVisible = false;
     private float phoneXRotate = 0;
@@ -357,9 +363,9 @@ public class AutoLib {
         }
     }
 
-    public float isServoArmBusy() {
-        return robot.getServoPosition(SERVO_AUTONOMOUS_GRABBER);
-    }
+//    public float isServoArmBusy() {
+//        return robot.getServoPosition(SERVO_AUTONOMOUS_GRABBER);
+//    }
 
 
     //********** Motor Methods **********//
@@ -401,22 +407,22 @@ public class AutoLib {
 //        opMode.idle();
 //    }
 
-    public boolean isFoundationTouchSensorPressed() {
-        return robot.isFoundationTouchSensorPressed();
-    }
-
-    public void moveUntilSensorTouched(int index, float power) {
-        opMode.telemetry.addData("isTouchSensorPressed before", robot.isFoundationTouchSensorPressed());
-        opMode.telemetry.update();
-        while (!robot.isTouchSensorPressed(index)) {
-            opMode.telemetry.addData("isTouchSensorPressed inside", robot.isFoundationTouchSensorPressed());
-            opMode.telemetry.update();
-            moveBackward(power);
-        }
-        opMode.telemetry.addData("isTouchSensorPressed after", robot.isFoundationTouchSensorPressed());
-        opMode.telemetry.update();
-        setBaseMotorPowers(0);
-    }
+//    public boolean isFoundationTouchSensorPressed() {
+//        return robot.isFoundationTouchSensorPressed();
+//    }
+//
+//    public void moveUntilSensorTouched(int index, float power) {
+//        opMode.telemetry.addData("isTouchSensorPressed before", robot.isFoundationTouchSensorPressed());
+//        opMode.telemetry.update();
+//        while (!robot.isTouchSensorPressed(index)) {
+//            opMode.telemetry.addData("isTouchSensorPressed inside", robot.isFoundationTouchSensorPressed());
+//            opMode.telemetry.update();
+//            moveBackward(power);
+//        }
+//        opMode.telemetry.addData("isTouchSensorPressed after", robot.isFoundationTouchSensorPressed());
+//        opMode.telemetry.update();
+//        setBaseMotorPowers(0);
+//    }
 
     public void moveForward(float power) {
         robot.setDcMotorPower(MOTOR_FRONT_LEFT_WHEEL, power);
@@ -490,66 +496,66 @@ public class AutoLib {
 //        robot.setServoPosition(SERVO_GRABBER, SERVO_GRABBER_REST);
 //    }
 //
-    public void latchServoFoundation() {
-        robot.setServoPosition(SERVO_FOUNDATION1, SERVO_FOUNDATION_GRAB1);
-        robot.setServoPosition(SERVO_FOUNDATION2, SERVO_FOUNDATION_GRAB2);
-    }
+//    public void latchServoFoundation() {
+//        robot.setServoPosition(SERVO_FOUNDATION1, SERVO_FOUNDATION_GRAB1);
+//        robot.setServoPosition(SERVO_FOUNDATION2, SERVO_FOUNDATION_GRAB2);
+//    }
+//
+//
+//    public void restServoFoundation() {
+//        robot.setServoPosition(SERVO_FOUNDATION1, SERVO_FOUNDATION_REST1);
+//        robot.setServoPosition(SERVO_FOUNDATION2, SERVO_FOUNDATION_REST2);
+//    }
+//
+//    public void autonArmDown() throws InterruptedException {
+//        robot.setServoPosition(SERVO_STOPPER, SERVO_STOPPER_REST);
+//        Thread.sleep(450);
+//        robot.setServoPosition(SERVO_AUTONOMOUS_ARM, SERVO_AUTONOMOUS_DOWN_ARM);
+//    }
 
-
-    public void restServoFoundation() {
-        robot.setServoPosition(SERVO_FOUNDATION1, SERVO_FOUNDATION_REST1);
-        robot.setServoPosition(SERVO_FOUNDATION2, SERVO_FOUNDATION_REST2);
-    }
-
-    public void autonArmDown() throws InterruptedException {
-        robot.setServoPosition(SERVO_STOPPER, SERVO_STOPPER_REST);
-        Thread.sleep(450);
-        robot.setServoPosition(SERVO_AUTONOMOUS_ARM, SERVO_AUTONOMOUS_DOWN_ARM);
-    }
-
-    public void autonArmUp() throws InterruptedException {
-        robot.setServoPosition(SERVO_AUTONOMOUS_ARM, SERVO_AUTONOMOUS_UP_ARM);
-        Thread.sleep(550);
-        robot.setServoPosition(SERVO_STOPPER, SERVO_STOPPER_STOP);
-
-
-    }
-
-    public void armUpLock() throws InterruptedException {
-        robot.setServoPosition(SERVO_SCORING_ARM, SERVO_AUTONOMOUS_UP_ARM);
-        Thread.sleep(400);
-        robot.setServoPosition(SERVO_STOPPER, SERVO_STOPPER_STOP);
-    }
-
-    public void armDownUnlock() throws InterruptedException {
-        robot.setServoPosition(SERVO_SCORING_ARM, SERVO_AUTONOMOUS_DOWN_ARM);
-        Thread.sleep(400);
-        robot.setServoPosition(SERVO_STOPPER, SERVO_STOPPER_REST);
-    }
-
-    public void autonGrab() {
-        robot.setServoPosition(SERVO_AUTONOMOUS_GRABBER, SERVO_AUTONOMOUS_GRABBER_GRAB);
-    }
-
-    public void autonScore() {
-        robot.setServoPosition(SERVO_AUTONOMOUS_GRABBER, SERVO_AUTONOMOUS_GRABBER_SCORE);
-    }
-
-    public void autonGrabFront() {
-        robot.setServoPosition(SERVO_AUTONOMOUS_GRABBER_FRONT, SERVO_AUTONOMOUS_GRABBER_FRONT_GRAB);
-    }
-
-    public void autonScoreFront() {
-        robot.setServoPosition(SERVO_AUTONOMOUS_GRABBER_FRONT, SERVO_AUTONOMOUS_GRABBER_FRONT_SCORE);
-    }
-
-    public void grabCapstone() {
-        robot.setServoPosition(SERVO_CAPSTONE, SERVO_CAPSTONE_HOLD);
-    }
-
-    public void scoringSlideRest() {
-        robot.setServoPosition(SERVO_SCORING_ARM, SERVO_SCORING_RETRACT);
-    }
+//    public void autonArmUp() throws InterruptedException {
+//        robot.setServoPosition(SERVO_AUTONOMOUS_ARM, SERVO_AUTONOMOUS_UP_ARM);
+//        Thread.sleep(550);
+//        robot.setServoPosition(SERVO_STOPPER, SERVO_STOPPER_STOP);
+//
+//
+//    }
+//
+//    public void armUpLock() throws InterruptedException {
+//        robot.setServoPosition(SERVO_SCORING_ARM, SERVO_AUTONOMOUS_UP_ARM);
+//        Thread.sleep(400);
+//        robot.setServoPosition(SERVO_STOPPER, SERVO_STOPPER_STOP);
+//    }
+//
+//    public void armDownUnlock() throws InterruptedException {
+//        robot.setServoPosition(SERVO_SCORING_ARM, SERVO_AUTONOMOUS_DOWN_ARM);
+//        Thread.sleep(400);
+//        robot.setServoPosition(SERVO_STOPPER, SERVO_STOPPER_REST);
+//    }
+//
+//    public void autonGrab() {
+//        robot.setServoPosition(SERVO_AUTONOMOUS_GRABBER, SERVO_AUTONOMOUS_GRABBER_GRAB);
+//    }
+//
+//    public void autonScore() {
+//        robot.setServoPosition(SERVO_AUTONOMOUS_GRABBER, SERVO_AUTONOMOUS_GRABBER_SCORE);
+//    }
+//
+//    public void autonGrabFront() {
+//        robot.setServoPosition(SERVO_AUTONOMOUS_GRABBER_FRONT, SERVO_AUTONOMOUS_GRABBER_FRONT_GRAB);
+//    }
+//
+//    public void autonScoreFront() {
+//        robot.setServoPosition(SERVO_AUTONOMOUS_GRABBER_FRONT, SERVO_AUTONOMOUS_GRABBER_FRONT_SCORE);
+//    }
+//
+//    public void grabCapstone() {
+//        robot.setServoPosition(SERVO_CAPSTONE, SERVO_CAPSTONE_HOLD);
+//    }
+//
+//    public void scoringSlideRest() {
+//        robot.setServoPosition(SERVO_SCORING_ARM, SERVO_SCORING_RETRACT);
+//    }
 
     //********** Vuforia Methods **********//
 
@@ -654,14 +660,14 @@ public class AutoLib {
                 .multiplied(Orientation.getRotationMatrix(EXTRINSIC, XYZ, DEGREES, 90, 0, -90)));
     }
 
-//    private void initOpenCv() {
-//        int cameraMonitorViewId = opMode.hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", opMode.hardwareMap.appContext.getPackageName());
-//        cvCamera = OpenCvCameraFactory.getInstance().createWebcam(opMode.hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
-//        cvCamera.openCameraDevice();
-//        cvCamera.setPipeline(pipeline);
-//        cvCamera.startStreaming(640, 480, OpenCvCameraRotation.SIDEWAYS_RIGHT);
-//
-//    }
+    private void initOpenCv() {
+        int cameraMonitorViewId = opMode.hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", opMode.hardwareMap.appContext.getPackageName());
+        cvCamera = OpenCvCameraFactory.getInstance().createWebcam(opMode.hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
+        cvCamera.openCameraDevice();
+        cvCamera.setPipeline(pipeline);
+        cvCamera.startStreaming(640, 480, OpenCvCameraRotation.UPRIGHT);
+
+    }
 
     public Constants.Coordinates readCoordinates() {
         double xPosition = 0;
@@ -738,8 +744,8 @@ public class AutoLib {
         return robot.getFoundationDistance();
     }
 
-//    public DetectionPipeline getPipeline() {
-//        return pipeline;
-//    }
+    public DetectionPipeline getPipeline() {
+        return pipeline;
+    }
 
 }

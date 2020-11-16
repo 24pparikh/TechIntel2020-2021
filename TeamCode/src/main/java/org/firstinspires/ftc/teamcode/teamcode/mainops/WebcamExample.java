@@ -37,7 +37,7 @@ public class WebcamExample extends LinearOpMode {
                 return input;
             }
         });
-        webcam.startStreaming(640, 480, OpenCvCameraRotation.SIDEWAYS_RIGHT);
+        webcam.startStreaming(640, 480, OpenCvCameraRotation.UPRIGHT);
         waitForStart();
         while (opModeIsActive()) {
             if(gamepad1.dpad_up){

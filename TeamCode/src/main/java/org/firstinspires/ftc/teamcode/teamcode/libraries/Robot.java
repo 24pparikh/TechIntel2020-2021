@@ -73,7 +73,7 @@ public class Robot {
     private TouchSensor foundationTouchSensor;
 //    private SensorREVColorDistance foundationColorDistanceSensor;
 
-    private RevTouchSensor[] touchSensors = new RevTouchSensor[1];
+//    private RevTouchSensor[] touchSensors = new RevTouchSensor[1];
 
     Robot(LinearOpMode opMode) {
         this.opMode = opMode;
@@ -118,7 +118,7 @@ public class Robot {
 ////        servos[SERVO_CAPSTONE] = opMode.hardwareMap.get(Servo.class, "servoCapstone");
 ////        servos[SERVO_INTAKE] = opMode.hardwareMap.get(Servo.class, "servoIntake");
 ////        servos[SERVO_STOPPER] = opMode.hardwareMap.get(Servo.class, "servoStopper");
-            servos[SERVO_GRIPPER_LEFT] = opMode.hardwareMap.get(Servo.class, "servoGripperLeft");
+//            servos[SERVO_GRIPPER_LEFT] = opMode.hardwareMap.get(Servo.class, "servoGripperLeft");
             servos[SERVO_GRIPPER_RIGHT] = opMode.hardwareMap.get(Servo.class, "servoGripperRight");
     }
 //
@@ -330,28 +330,28 @@ public class Robot {
 
 
     // Servo methods
-    void setServoPosition(int index, float position) {
-        servos[index].setPosition(position);
-    }
+//    void setServoPosition(int index, float position) {
+//        servos[index].setPosition(position);
+//    }
 
 
-    void setDeltaServoPosition(int index, float delta) {
-        servos[index].setPosition(
-                // This makes sure the servo positions are between 0 and 1
-                Range.clip(servos[index].getPosition() + delta, 0, 1));
-    }
+//    void setDeltaServoPosition(int index, float delta) {
+//        servos[index].setPosition(
+//                // This makes sure the servo positions are between 0 and 1
+//                Range.clip(servos[index].getPosition() + delta, 0, 1));
+//    }
 
-    float getServoPosition(int index) {
-        return (float) servos[index].getPosition();
-    }
+//    float getServoPosition(int index) {
+//        return (float) servos[index].getPosition();
+//    }
 
-    boolean isTouchSensorPressed(int index) {
-        return touchSensors[index].isPressed();
-    }
-
-    boolean isFoundationTouchSensorPressed() {
-        return touchSensors[FOUNDATION_TOUCH_SENSOR].isPressed();
-    }
+//    boolean isTouchSensorPressed(int index) {
+//        return touchSensors[index].isPressed();
+//    }
+//
+//    boolean isFoundationTouchSensorPressed() {
+//        return touchSensors[FOUNDATION_TOUCH_SENSOR].isPressed();
+//    }
 
     double getDistanceCM() {
         return (frontDistanceSensor.getDistance(DistanceUnit.CM));

@@ -19,9 +19,9 @@ public class DetectionPipeline extends OpenCvPipeline {
     public Mat processFrame(Mat input) {
         double[] color1 = avgColor(input, points[0], points[1]), color2 = avgColor(input, points[2], points[3]);
         double avg1 = (color1[0]+color1[1]+color1[2])/3, avg2 = (color2[0]+color1[1]+color1[2])/3;
-        if(Math.abs(avg1-avg2)<20){
+        if(Math.abs(avg1-avg2) < 20){
             pos = 2;
-        } else if(avg1<avg2){
+        } else if(avg1 < avg2){
             pos = 0;
         } else {
             pos = 1;
