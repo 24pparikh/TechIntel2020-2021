@@ -99,8 +99,8 @@ public class AutoLib {
         robot = new Robot(opMode);
         this.opMode = opMode;
         OpMode aOpMode;
-//        pipeline = new DetectionPipeline(points);
-        pipeline = new DetectionPipeline(new Point[]{});
+        pipeline = new DetectionPipeline(points);
+//        pipeline = new DetectionPipeline(new Point[]{});
 //        pipeline = new DetectionPipeline(Point[]{});
 
         //initVuforia();
