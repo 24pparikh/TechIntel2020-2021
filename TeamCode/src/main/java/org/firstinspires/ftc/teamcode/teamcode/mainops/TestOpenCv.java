@@ -21,16 +21,18 @@ import org.opencv.core.Point;
 //
 @Autonomous(group = "Support")
 public class TestOpenCv extends LinearOpMode {
-//    private AutoLib autoLib;
-private TeleLib teleLib;
+    private AutoLib autoLib;
+//private TeleLib teleLib;
 
 
     @SuppressWarnings("RedundantThrows")
     @Override
     public void runOpMode() throws InterruptedException {
         initialize();
-//        telemetry.addData("pos", autoLib.getPipeline().getDetectedPosition());
-//        autoLib.getPipeline().getDetectedPosition();
+        telemetry.addData("pos", autoLib.getPipeline().getDetectedPosition());
+        telemetry.update();
+        autoLib.getPipeline().getDetectedPosition();
+        Thread.sleep(5000);
 
 
     }
@@ -41,8 +43,8 @@ private TeleLib teleLib;
         telemetry.update();
 
 //        autoLib = new AutoLib(this, new Point[]{new Point(161, 233), new Point(255, 172), new Point(161, 231), new Point(252, 224)});
-//        autoLib = new AutoLib(this, new Point[]{new Point(217, 426), new Point(299, 454), new Point(217, 260), new Point(299, 289)});
-        teleLib = new TeleLib(this);
+        autoLib = new AutoLib(this, new Point[]{new Point(413, 243), new Point(187, 146), new Point(413, 307), new Point(187, 290)});
+//        teleLib = new TeleLib(this);
         telemetry.addData("Status", "Ready");
         telemetry.update();
         waitForStart();
