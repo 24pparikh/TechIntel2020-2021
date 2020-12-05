@@ -20,10 +20,6 @@ import org.firstinspires.ftc.teamcode.teamcode.mainops.DetectionPipeline;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
-import org.firstinspires.ftc.teamcode.teamcode.mainops.DetectionPipeline;
-import org.openftc.easyopencv.OpenCvCamera;
-import org.openftc.easyopencv.OpenCvCameraFactory;
-import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.opencv.core.Point;
 
 import java.util.ArrayList;
@@ -41,31 +37,12 @@ import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.MOTOR_
 import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.MOTOR_BACK_RIGHT_WHEEL;
 import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.MOTOR_FRONT_LEFT_WHEEL;
 import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.MOTOR_FRONT_RIGHT_WHEEL;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.MOTOR_LEFT_INTAKE;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.MOTOR_RIGHT_INTAKE;
+import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.MOTOR_BOTTOM_SHOOTER;
+import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.MOTOR_INTAKE;
+import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.MOTOR_TOP_SHOOTER;
+import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.MOTOR_WOBBLE_ARM;
 import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.NEVEREST_40_REVOLUTION_ENCODER_COUNT;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_AUTONOMOUS_ARM;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_AUTONOMOUS_DOWN_ARM;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_AUTONOMOUS_GRABBER;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_AUTONOMOUS_GRABBER_FRONT;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_AUTONOMOUS_GRABBER_FRONT_GRAB;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_AUTONOMOUS_GRABBER_FRONT_SCORE;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_AUTONOMOUS_GRABBER_GRAB;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_AUTONOMOUS_GRABBER_SCORE;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_AUTONOMOUS_UP_ARM;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_CAPSTONE;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_CAPSTONE_HOLD;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_FOUNDATION1;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_FOUNDATION2;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_FOUNDATION_GRAB1;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_FOUNDATION_GRAB2;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_FOUNDATION_REST1;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_FOUNDATION_REST2;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_SCORING_ARM;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_SCORING_RETRACT;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_STOPPER;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_STOPPER_REST;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_STOPPER_STOP;
+import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_INTAKE;
 import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.TRACK_DISTANCE;
 import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.VUFORIA_KEY;
 import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.VUFORIA_READING_TIME;
@@ -99,8 +76,8 @@ public class AutoLib {
         robot = new Robot(opMode);
         this.opMode = opMode;
         OpMode aOpMode;
-        pipeline = new DetectionPipeline(points);
-//        pipeline = new DetectionPipeline(new Point[]{});
+//        pipeline = new DetectionPipeline(points);
+        pipeline = new DetectionPipeline(new Point[]{});
 //        pipeline = new DetectionPipeline(Point[]{});
 
         //initVuforia();
@@ -373,8 +350,8 @@ public class AutoLib {
     public void intakeStone() {
         ElapsedTime time = new ElapsedTime();
 
-        robot.setDcMotorPower(MOTOR_RIGHT_INTAKE, -.5f);
-        robot.setDcMotorPower(MOTOR_LEFT_INTAKE, .5f);
+        robot.setDcMotorPower(MOTOR_TOP_SHOOTER, -.5f);
+        robot.setDcMotorPower(MOTOR_BOTTOM_SHOOTER, .5f);
         while (time.seconds() <= 5) {
             opMode.idle();
         }
@@ -385,6 +362,34 @@ public class AutoLib {
 
         // Thread.sleep(100);
 //        robot.setServoPosition(SERVO_GRABBER, SERVO_GRABBER_GRAB);
+    }
+
+    public void intakeRing() {
+
+        ElapsedTime time = new ElapsedTime();
+
+        while (time.seconds() <= 5) {
+            robot.setDcMotorPower(MOTOR_TOP_SHOOTER, -.5f);
+            robot.setDcMotorPower(MOTOR_BOTTOM_SHOOTER, .5f);
+            robot.setDcMotorPower(MOTOR_INTAKE, -.5f);
+            robot.setServoPosition(SERVO_INTAKE, 1);
+        }
+    }
+
+    public void stopIntakeRing() {
+        robot.setDcMotorPower(MOTOR_TOP_SHOOTER, 0f);
+        robot.setDcMotorPower(MOTOR_BOTTOM_SHOOTER, 0f);
+        robot.setDcMotorPower(MOTOR_INTAKE,0f);
+        robot.setServoPosition(SERVO_INTAKE,0);
+    }
+
+    public void wobbleDown() {
+
+        ElapsedTime time = new ElapsedTime();
+
+        while (time.seconds() < 2) {
+            robot.setDcMotorPower(MOTOR_WOBBLE_ARM, 1);
+        }
     }
 
 //    public void moveArmUp() {

@@ -1,11 +1,11 @@
 package org.firstinspires.ftc.teamcode.teamcode.mainops;
 
-
 import org.opencv.core.Mat;
 import org.opencv.core.Point;
 import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 import org.openftc.easyopencv.OpenCvPipeline;
+
 
 
 public class DetectionPipeline extends OpenCvPipeline {
@@ -19,9 +19,13 @@ public class DetectionPipeline extends OpenCvPipeline {
     public Mat processFrame(Mat input) {
         double[] color1 = avgColor(input, points[0], points[1]), color2 = avgColor(input, points[2], points[3]);
         double avg1 = (color1[0]+color1[1]+color1[2])/3, avg2 = (color2[0]+color1[1]+color1[2])/3;
-        if(Math.abs(avg1-avg2) < 20){
+
+
+//        pos = (int) color1[0];
+
+        if((avg2 < avg1)){
             pos = 2;
-        } else if(avg1 < avg2){
+        } else if(avg2 > avg1){
             pos = 0;
         } else {
             pos = 1;

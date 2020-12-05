@@ -5,42 +5,19 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.GAMEPAD_JOYSTICK_TOLERANCE;
 import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.GAMEPAD_TRIGGER_TOLERANCE;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.MOTOR_ARM;
+import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.MOTOR_WOBBLE_ARM;
 import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.MOTOR_BACK_LEFT_WHEEL;
 import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.MOTOR_BACK_RIGHT_WHEEL;
+import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.MOTOR_BOTTOM_SHOOTER;
+import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.MOTOR_INTAKE;
 import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.MOTOR_FRONT_LEFT_WHEEL;
 import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.MOTOR_FRONT_RIGHT_WHEEL;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.MOTOR_LEFT_INTAKE;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.MOTOR_RIGHT_INTAKE;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.MOTOR_TAPE;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_AUTONOMOUS_ARM;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_AUTONOMOUS_GRABBER;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_AUTONOMOUS_GRABBER_GRAB;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_AUTONOMOUS_UP_ARM;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_CAPSTONE;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_CAPSTONE_DROP;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_CAPSTONE_HOLD;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_FOUNDATION1;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_FOUNDATION2;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_FOUNDATION_GRAB1;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_FOUNDATION_GRAB2;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_FOUNDATION_REST1;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_FOUNDATION_REST2;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_GRABBER;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_GRABBER_GRAB;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_GRABBER_REST;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_GRIPPER_LEFT;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_GRIPPER_LEFT_GRAB;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_GRIPPER_LEFT_REST;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_GRIPPER_RIGHT;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_GRIPPER_RIGHT_GRAB;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_GRIPPER_RIGHT_REST;
+import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.MOTOR_TOP_SHOOTER;
 import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_INTAKE;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_SCORING_ARM;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_SCORING_EXTEND;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_SCORING_RETRACT;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_STOPPER;
-import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_STOPPER_STOP;
+import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_WOBBLE;
+import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_WOBBLE_FIRST;
+import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_WOBBLE_SECOND;
+import static org.firstinspires.ftc.teamcode.teamcode.libraries.Constants.SERVO_WOBBLE_THIRD;
 
 /*
  * Title: TeleLib
@@ -89,31 +66,88 @@ public class TeleLib {
         robot.setDcMotorPower(MOTOR_BACK_LEFT_WHEEL, (float) (r * Math.sin(robotAngle) + rightX) * speed);
         robot.setDcMotorPower(MOTOR_BACK_RIGHT_WHEEL, (float) (r * Math.cos(robotAngle) - rightX) * speed);
 
-//        speed = 1;
-
         if (opMode.gamepad1.dpad_left) {
             speed = 1;
         } else if (opMode.gamepad1.dpad_right) {
             speed = .5f;
         }
-//        float powerFactor = 1;
-//        boolean isDPadPressed = true;
-//
-//        if (opMode.gamepad1.dpad_up && isDPadPressed) {
-//            powerFactor = 3;
-//            robot.setDcMotorPower(MOTOR_FRONT_LEFT_WHEEL, (float) (r * Math.cos(robotAngle) + rightX) / powerFactor);
-//            robot.setDcMotorPower(MOTOR_FRONT_RIGHT_WHEEL, (float) (r * Math.sin(robotAngle) - rightX) / powerFactor);
-//            robot.setDcMotorPower(MOTOR_BACK_LEFT_WHEEL, (float) (r * Math.sin(robotAngle) + rightX) / powerFactor);
-//            robot.setDcMotorPower(MOTOR_BACK_RIGHT_WHEEL, (float) (r * Math.cos(robotAngle) - rightX) / powerFactor);
-//        }
-//
-//        if (opMode.gamepad1.dpad_down && isDPadPressed) {
-//            robot.setDcMotorPower(MOTOR_FRONT_LEFT_WHEEL, (float) (r * Math.cos(robotAngle) + rightX));
-//            robot.setDcMotorPower(MOTOR_FRONT_RIGHT_WHEEL, (float) (r * Math.sin(robotAngle) - rightX));
-//            robot.setDcMotorPower(MOTOR_BACK_LEFT_WHEEL, (float) (r * Math.sin(robotAngle) + rightX));
-//            robot.setDcMotorPower(MOTOR_BACK_RIGHT_WHEEL, (float) (r * Math.cos(robotAngle) - rightX));
-//        }
     }
+
+//    public void processShooter() {
+//        if (opMode.gamepad2.right_bumper) {
+//            robot.setDcMotorPower(MOTOR_TOP_SHOOTER, .5f);
+//            robot.setDcMotorPower(MOTOR_BOTTOM_SHOOTER, .5f);
+//        }
+//        if (opMode.gamepad2.left_bumper) {
+//            robot.setDcMotorPower(MOTOR_TOP_SHOOTER, -1f);
+//            robot.setDcMotorPower(MOTOR_BOTTOM_SHOOTER, -1f);
+//        }
+//    }
+
+    public void processIntake() {
+        if (opMode.gamepad1.a) {
+            robot.setDcMotorPower(MOTOR_INTAKE, -.25f);
+//            robot.setDcMotorPower(MOTOR_TOP_SHOOTER, -1f);
+//            robot.setDcMotorPower(MOTOR_BOTTOM_SHOOTER, -1f);
+        }
+        if (opMode.gamepad1.b) {
+            robot.setDcMotorPower(MOTOR_INTAKE,1f);
+//            robot.setDcMotorPower(MOTOR_TOP_SHOOTER, 1f);
+//            robot.setDcMotorPower(MOTOR_BOTTOM_SHOOTER, 1f);
+        }
+    }
+
+    public void processShooter() {
+        if (opMode.gamepad2.right_bumper) {
+            robot.setDcMotorPower(MOTOR_TOP_SHOOTER, -1f);
+            robot.setDcMotorPower(MOTOR_BOTTOM_SHOOTER, -1f);
+        }
+        else if (opMode.gamepad2.left_bumper) {
+            robot.setDcMotorPower(MOTOR_TOP_SHOOTER, 1f);
+            robot.setDcMotorPower(MOTOR_BOTTOM_SHOOTER, 1f);
+        }
+        else if (opMode.gamepad2.y) {
+            robot.setDcMotorPower(MOTOR_TOP_SHOOTER, 0);
+            robot.setDcMotorPower(MOTOR_BOTTOM_SHOOTER, 0);
+        }
+    }
+
+    public void processServoIntake() {
+        if (opMode.gamepad2.a) {
+            robot.setServoPosition(SERVO_INTAKE,1);
+        }
+        else if (opMode.gamepad2.b) {
+            robot.setServoPosition(SERVO_INTAKE,0);
+        }
+        else if (opMode.gamepad2.x) {
+            robot.setServoPosition(SERVO_INTAKE,.5f);
+        }
+     }
+
+    public void processWobbleArm() throws InterruptedException {
+
+        if (opMode.gamepad2.right_trigger > GAMEPAD_TRIGGER_TOLERANCE) {
+            robot.setServoPosition(SERVO_WOBBLE, SERVO_WOBBLE_FIRST);
+            robot.setDcMotorPower(MOTOR_WOBBLE_ARM, -.5f);
+//            Thread.sleep(50);
+            robot.setServoPosition(SERVO_WOBBLE, SERVO_WOBBLE_SECOND);
+//            Thread.sleep(10);
+            robot.setServoPosition(SERVO_WOBBLE,SERVO_WOBBLE_THIRD);
+        }
+        if (opMode.gamepad2.left_trigger > GAMEPAD_TRIGGER_TOLERANCE) {
+            robot.setServoPosition(SERVO_WOBBLE,SERVO_WOBBLE_FIRST);
+            robot.setDcMotorPower(MOTOR_WOBBLE_ARM, .5f);
+        } else {
+            robot.setDcMotorPower(MOTOR_WOBBLE_ARM, 0);
+        }
+    }
+
+    public void processStopIntake() {
+        if (opMode.gamepad1.x) {
+            robot.setDcMotorPower(MOTOR_INTAKE, 0);
+        }
+    }
+}
 
 //    public void processGripperStone() {
 //        if (opMode.gamepad1.a) {
@@ -168,15 +202,15 @@ public class TeleLib {
 //        }
 //    }
 //
-////    private boolean isBlockInIntake() {
-////        if (distance <= 2) {
-////            return true;
-////        } else {
-////            return false;
-////        }
-////
-////        return distance <= 2;
-////    }
+//    private boolean isBlockInIntake() {
+//        if (distance <= 2) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//
+//        return distance <= 2;
+//    }
 //
 //    public void processIntakeStone() {
 //        if (opMode.gamepad1.right_bumper) {
@@ -267,7 +301,7 @@ public class TeleLib {
 //        robot.setServoPosition(SERVO_AUTONOMOUS_GRABBER, SERVO_AUTONOMOUS_GRABBER_GRAB);
 //    }
 
-}
+
 //
 //    public void processScoreStone() {
 //        if (opMode.gamepad2.x) {

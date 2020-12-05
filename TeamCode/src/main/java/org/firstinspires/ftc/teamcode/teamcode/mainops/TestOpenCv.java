@@ -29,21 +29,35 @@ public class TestOpenCv extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         initialize();
-        telemetry.addData("pos", autoLib.getPipeline().getDetectedPosition());
-        telemetry.update();
+//        telemetry.addData("pos", autoLib.getPipeline().getDetectedPosition());
+//        telemetry.update();
         autoLib.getPipeline().getDetectedPosition();
-        Thread.sleep(5000);
+
+        if (autoLib.getPipeline().getDetectedPosition() == 0) {
+            telemetry.addData("pos", "0");
+            telemetry.update();
+        }
+
+        else if (autoLib.getPipeline().getDetectedPosition() == 1) {
+            telemetry.addData("pos", "1");
+            telemetry.update();
+        }
+
+        else if (autoLib.getPipeline().getDetectedPosition() == 2) {
+            telemetry.addData("pos", "2");
+            telemetry.update();
+        }
 
 
+        Thread.sleep(10000);
     }
-
 
     private void initialize() {
         telemetry.addData("Status", "Initializing...");
         telemetry.update();
 
 //        autoLib = new AutoLib(this, new Point[]{new Point(161, 233), new Point(255, 172), new Point(161, 231), new Point(252, 224)});
-        autoLib = new AutoLib(this, new Point[]{new Point(413, 243), new Point(187, 146), new Point(413, 307), new Point(187, 290)});
+        autoLib = new AutoLib(this, new Point[]{new Point(546, 150), new Point(176, -1), new Point(473, 355), new Point(287, 305)});
 //        teleLib = new TeleLib(this);
         telemetry.addData("Status", "Ready");
         telemetry.update();

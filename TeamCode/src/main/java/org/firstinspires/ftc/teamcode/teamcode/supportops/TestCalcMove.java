@@ -27,16 +27,9 @@ public class TestCalcMove extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         initialize();
 
-        telemetry.addLine("About to move");
-        telemetry.update();
-        autoLib.calcMove(10,.1f, Constants.Direction.FORWARD);
-        telemetry.addLine("Done moving");
-//        autoLib.rampMove(200,1f, Constants.Direction.FORWARD, true);
 
-       Thread.sleep(1000);
 
-        telemetry.addData("Just moved","finished moving");
-        telemetry.update();
+
     }
 
 
