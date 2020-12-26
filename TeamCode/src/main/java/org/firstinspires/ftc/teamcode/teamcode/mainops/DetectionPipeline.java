@@ -23,6 +23,8 @@ public class DetectionPipeline extends OpenCvPipeline {
 
 //        pos = (int) color1[0];
 
+
+
         if((avg2 < avg1)){
             pos = 2;
         } else if(avg2 > avg1){

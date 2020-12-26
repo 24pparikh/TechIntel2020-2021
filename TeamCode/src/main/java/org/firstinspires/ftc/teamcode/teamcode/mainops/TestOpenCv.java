@@ -22,7 +22,6 @@ import org.opencv.core.Point;
 @Autonomous(group = "Support")
 public class TestOpenCv extends LinearOpMode {
     private AutoLib autoLib;
-//private TeleLib teleLib;
 
 
     @SuppressWarnings("RedundantThrows")
