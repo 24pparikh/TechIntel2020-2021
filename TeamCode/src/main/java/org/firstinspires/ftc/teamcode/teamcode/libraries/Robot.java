@@ -79,10 +79,10 @@ public class Robot {
         dcMotors[MOTOR_FRONT_RIGHT_WHEEL] = opMode.hardwareMap.get(DcMotor.class, "frontRightWheel");
         dcMotors[MOTOR_BACK_LEFT_WHEEL] = opMode.hardwareMap.get(DcMotor.class, "backLeftWheel");
         dcMotors[MOTOR_BACK_RIGHT_WHEEL] = opMode.hardwareMap.get(DcMotor.class, "backRightWheel");
-        dcMotors[MOTOR_TOP_SHOOTER] = opMode.hardwareMap.get(DcMotor.class, "topShooter");
-        dcMotors[MOTOR_BOTTOM_SHOOTER] = opMode.hardwareMap.get(DcMotor.class, "bottomShooter");
-        dcMotors[MOTOR_WOBBLE_ARM] = opMode.hardwareMap.get(DcMotor.class, "WobbleArm");
-        dcMotors[MOTOR_INTAKE] = opMode.hardwareMap.get(DcMotor.class, "intake");
+//        dcMotors[MOTOR_TOP_SHOOTER] = opMode.hardwareMap.get(DcMotor.class, "topShooter");
+//        dcMotors[MOTOR_BOTTOM_SHOOTER] = opMode.hardwareMap.get(DcMotor.class, "bottomShooter");
+//        dcMotors[MOTOR_WOBBLE_ARM] = opMode.hardwareMap.get(DcMotor.class, "WobbleArm");
+//        dcMotors[MOTOR_INTAKE] = opMode.hardwareMap.get(DcMotor.class, "intake");
 
         dcMotors[MOTOR_FRONT_LEFT_WHEEL].setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         dcMotors[MOTOR_FRONT_RIGHT_WHEEL].setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
