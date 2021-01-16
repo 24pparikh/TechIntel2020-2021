@@ -84,70 +84,69 @@ public class TeleLib {
 //        }
 //    }
 
-    public void processIntake() {
-        if (opMode.gamepad1.a) {
-            robot.setDcMotorPower(MOTOR_INTAKE, -.25f);
+//    public void processIntake() {
+//        if (opMode.gamepad1.a) {
+//            robot.setDcMotorPower(MOTOR_INTAKE, -.25f);
+////            robot.setDcMotorPower(MOTOR_TOP_SHOOTER, -1f);
+////            robot.setDcMotorPower(MOTOR_BOTTOM_SHOOTER, -1f);
+//        }
+//        if (opMode.gamepad1.b) {
+//            robot.setDcMotorPower(MOTOR_INTAKE,1f);
+////            robot.setDcMotorPower(MOTOR_TOP_SHOOTER, 1f);
+////            robot.setDcMotorPower(MOTOR_BOTTOM_SHOOTER, 1f);
+//        }
+//    }
+
+//    public void processShooter() {
+//        if (opMode.gamepad2.right_bumper) {
 //            robot.setDcMotorPower(MOTOR_TOP_SHOOTER, -1f);
 //            robot.setDcMotorPower(MOTOR_BOTTOM_SHOOTER, -1f);
-        }
-        if (opMode.gamepad1.b) {
-            robot.setDcMotorPower(MOTOR_INTAKE,1f);
+//        }
+//        else if (opMode.gamepad2.left_bumper) {
 //            robot.setDcMotorPower(MOTOR_TOP_SHOOTER, 1f);
 //            robot.setDcMotorPower(MOTOR_BOTTOM_SHOOTER, 1f);
-        }
-    }
-
-    public void processShooter() {
-        if (opMode.gamepad2.right_bumper) {
-            robot.setDcMotorPower(MOTOR_TOP_SHOOTER, -1f);
-            robot.setDcMotorPower(MOTOR_BOTTOM_SHOOTER, -1f);
-        }
-        else if (opMode.gamepad2.left_bumper) {
-            robot.setDcMotorPower(MOTOR_TOP_SHOOTER, 1f);
-            robot.setDcMotorPower(MOTOR_BOTTOM_SHOOTER, 1f);
-        }
-        else if (opMode.gamepad2.y) {
-            robot.setDcMotorPower(MOTOR_TOP_SHOOTER, 0);
-            robot.setDcMotorPower(MOTOR_BOTTOM_SHOOTER, 0);
-        }
-    }
+//        }
+//        else if (opMode.gamepad2.y) {
+//            robot.setDcMotorPower(MOTOR_TOP_SHOOTER, 0);
+//            robot.setDcMotorPower(MOTOR_BOTTOM_SHOOTER, 0);
+//        }
+//    }
 
     public void processServoIntake() {
         if (opMode.gamepad2.a) {
-            robot.setServoPosition(SERVO_INTAKE,1);
-        }
-        else if (opMode.gamepad2.b) {
-            robot.setServoPosition(SERVO_INTAKE,0);
-        }
-        else if (opMode.gamepad2.x) {
-            robot.setServoPosition(SERVO_INTAKE,.5f);
-        }
-     }
-
-    public void processWobbleArm() throws InterruptedException {
-
-        if (opMode.gamepad2.right_trigger > GAMEPAD_TRIGGER_TOLERANCE) {
-            robot.setServoPosition(SERVO_WOBBLE, SERVO_WOBBLE_FIRST);
-            robot.setDcMotorPower(MOTOR_WOBBLE_ARM, -.5f);
-//            Thread.sleep(50);
-            robot.setServoPosition(SERVO_WOBBLE, SERVO_WOBBLE_SECOND);
-//            Thread.sleep(10);
-            robot.setServoPosition(SERVO_WOBBLE,SERVO_WOBBLE_THIRD);
-        }
-        if (opMode.gamepad2.left_trigger > GAMEPAD_TRIGGER_TOLERANCE) {
-            robot.setServoPosition(SERVO_WOBBLE,SERVO_WOBBLE_FIRST);
-            robot.setDcMotorPower(MOTOR_WOBBLE_ARM, .5f);
-        } else {
-            robot.setDcMotorPower(MOTOR_WOBBLE_ARM, 0);
-        }
-    }
-
-    public void processStopIntake() {
-        if (opMode.gamepad1.x) {
-            robot.setDcMotorPower(MOTOR_INTAKE, 0);
+            robot.setServoPosition(SERVO_INTAKE, 1);
+        } else if (opMode.gamepad2.b) {
+            robot.setServoPosition(SERVO_INTAKE, 0);
+        } else if (opMode.gamepad2.x) {
+            robot.setServoPosition(SERVO_INTAKE, .5f);
         }
     }
 }
+
+//    public void processWobbleArm() throws InterruptedException {
+//
+//        if (opMode.gamepad2.right_trigger > GAMEPAD_TRIGGER_TOLERANCE) {
+//            robot.setServoPosition(SERVO_WOBBLE, SERVO_WOBBLE_FIRST);
+//            robot.setDcMotorPower(MOTOR_WOBBLE_ARM, -.5f);
+////            Thread.sleep(50);
+//            robot.setServoPosition(SERVO_WOBBLE, SERVO_WOBBLE_SECOND);
+////            Thread.sleep(10);
+//            robot.setServoPosition(SERVO_WOBBLE,SERVO_WOBBLE_THIRD);
+//        }
+//        if (opMode.gamepad2.left_trigger > GAMEPAD_TRIGGER_TOLERANCE) {
+//            robot.setServoPosition(SERVO_WOBBLE,SERVO_WOBBLE_FIRST);
+//            robot.setDcMotorPower(MOTOR_WOBBLE_ARM, .5f);
+//        } else {
+//            robot.setDcMotorPower(MOTOR_WOBBLE_ARM, 0);
+//        }
+//    }
+
+//    public void processStopIntake() {
+//        if (opMode.gamepad1.x) {
+//            robot.setDcMotorPower(MOTOR_INTAKE, 0);
+//        }
+//    }
+//}
 
 //    public void processGripperStone() {
 //        if (opMode.gamepad1.a) {
