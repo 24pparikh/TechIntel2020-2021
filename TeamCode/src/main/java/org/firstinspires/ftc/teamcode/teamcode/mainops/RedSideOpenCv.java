@@ -222,7 +222,7 @@
 //        telemetry.addData("Status", "Initializing...");
 //        telemetry.update();
 //
-////        autoLib = new AutoLib(this, new Point[]{new Point(194, 184), new Point(275, 160), new Point(194, 353), new Point(275, 331)});
+//        autoLib = new AutoLib(this, new Point[]{new Point(194, 184), new Point(275, 160), new Point(194, 353), new Point(275, 331)});
 //        autoLib = new AutoLib(this, new Point[]{new Point(217, 426), new Point(299, 454), new Point(217, 260), new Point(299, 289)});
 //
 //        autoLib.restServoFoundation();

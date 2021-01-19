@@ -20,22 +20,14 @@ public class Constants {
     static final int MOTOR_FRONT_RIGHT_WHEEL = 1;
     static final int MOTOR_BACK_LEFT_WHEEL = 2;
     static final int MOTOR_BACK_RIGHT_WHEEL = 3;
-    static final int MOTOR_RIGHT_INTAKE = 4;
-    static final int MOTOR_LEFT_INTAKE = 5;
-    static final int MOTOR_ARM = 6;
-    static final int MOTOR_TAPE = 7;
+    static final int MOTOR_TOP_SHOOTER = 4;
+    static final int MOTOR_BOTTOM_SHOOTER = 5;
+    static final int MOTOR_WOBBLE_ARM = 6;
+    static final int MOTOR_INTAKE = 7;
 
     //********** Servo Indexes **********//
-    static final int SERVO_CAPSTONE = 0;
-    static final int SERVO_GRABBER = 1;
-    static final int SERVO_FOUNDATION1 = 2;
-    static final int SERVO_FOUNDATION2 = 3;
-    static final int SERVO_SCORING_ARM = 4;
-    static final int SERVO_AUTONOMOUS_GRABBER = 5;
-    static final int SERVO_AUTONOMOUS_ARM = 6;
-    static final int SERVO_INTAKE = 7;
-    static final int SERVO_STOPPER = 8;
-    static final int SERVO_AUTONOMOUS_GRABBER_FRONT = 9;
+    static final int SERVO_INTAKE = 0;
+    static final int SERVO_WOBBLE = 1;
 
 
     //********** Ramp *********************//
@@ -54,27 +46,15 @@ public class Constants {
 
 
     //********** Servo Positions **********//
-    static final float SERVO_ARM_POS_RECIEVE = .97f;
-    static final float SERVO_ARM_POS_SCORE = .27f;
-    static final float SERVO_GRABBER_GRAB = 0.60f;
-    static final float SERVO_CAPSTONE_DROP = .2f;
-    static final float SERVO_CAPSTONE_HOLD = 0.46f;
-    static final float SERVO_GRABBER_REST = .36f;
-    static final float SERVO_FOUNDATION_GRAB1 = .56f;
-    static final float SERVO_FOUNDATION_REST1 = .78f;   //.67
-    static final float SERVO_FOUNDATION_GRAB2 = .73f;    //.8
-    static final float SERVO_FOUNDATION_REST2 = .46f;   //.59
-    static final float SERVO_AUTONOMOUS_GRABBER_GRAB = .7f;
-    static final float SERVO_AUTONOMOUS_GRABBER_SCORE = .28f;
-    static final float SERVO_AUTONOMOUS_GRABBER_FRONT_GRAB = .7f;
-    static final float SERVO_AUTONOMOUS_GRABBER_FRONT_SCORE = .7f;
-    static final float SERVO_AUTONOMOUS_UP_ARM = .55f;   //.4
-    static final float SERVO_AUTONOMOUS_DOWN_ARM = 1f;
-    static final float SERVO_SCORING_EXTEND = 0.12f; // Change position
-    static final float SERVO_SCORING_RETRACT = 0.9f;// Change position
-    static final float SERVO_TELEOP_ARM_POSITION = .15f;
-    static final float SERVO_STOPPER_STOP = 0.57f;
-    static final float SERVO_STOPPER_REST = 0f;
+    static final float SERVO_GRIPPER_LEFT_REST = .48f;
+    static final float SERVO_GRIPPER_LEFT_GRAB = .7f;
+    static final float SERVO_GRIPPER_RIGHT_REST = .46f;
+    static final float SERVO_GRIPPER_RIGHT_GRAB = .28f;
+    static final float SERVO_WOBBLE_FIRST = .35f;
+    static final float SERVO_WOBBLE_SECOND = .54f;
+    static final float SERVO_WOBBLE_THIRD = .85f;
+
+
 
     //********** Touch Sensor Indexes **********//
     public static final int FOUNDATION_TOUCH_SENSOR = 0;
